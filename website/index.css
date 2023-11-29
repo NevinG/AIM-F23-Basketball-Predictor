@@ -1,0 +1,40 @@
+#today{
+    text-align: center;
+    font-weight: bold;
+    font-size: large;
+}
+
+#yesterday, #tomorrow{
+    cursor:pointer;
+    font-weight: bold;
+    margin: 4px;
+}
+
+#gameContainer{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#navigation{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    text-align: center;
+}
+
+.game{
+    text-align: center;
+    min-width: 25%;
+    max-width: 75%;
+    width: 50%;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 20px;
+    border: 1px black solid;
+    background-color: beige;
+}
