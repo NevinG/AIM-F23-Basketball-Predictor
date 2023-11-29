@@ -28,7 +28,7 @@ tomorrow.onclick = () => {
 function moveDate(i){
     if(dateString == '10/24/2023' && i < 0)
         return;
-    if(dateString == '4/14/2024' && i > 0)
+    if(dateString == '04/14/2024' && i > 0)
         return;
 
     date.setDate(date.getDate() + i)
