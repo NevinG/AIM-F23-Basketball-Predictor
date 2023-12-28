@@ -337,5 +337,5 @@ for i in range(schedule_df.shape[0]):
     else:
         data[date] = [game]
 
-with open('./website/data.js', "w") as file:
+with open('./docs/data.js', "w") as file:
     file.write("const data = " + str(data))
