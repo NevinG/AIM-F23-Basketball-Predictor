@@ -22,7 +22,7 @@ from bs4 import BeautifulSoup
 
 for team in teams:
     #this is so our requests dont get timed out
-    #print(team)
+    print(team)
     time.sleep(5)
     
     #GET current df
@@ -58,12 +58,13 @@ for team in teams:
     for row in rows:
         cols = row.find_all('td')
         cols = [ele.text.strip() for ele in cols]
-
         #make sure this column is a new column not in the dataset
+        if len(cols) < 2:
+            continue
         date = cols[1]
         date_object = datetime.strptime(date, '%Y-%m-%d').date()
         if date_object <= most_recent_date_object:
-            break
+            continue
         
         
         #sanitize this col
@@ -92,10 +93,12 @@ for team in teams:
         cols = [ele.text.strip() for ele in cols]
 
         #make sure this column is a new column not in the dataset
+        if len(cols) < 2:
+            continue
         date = cols[1]
         date_object = datetime.strptime(date, '%Y-%m-%d').date()
         if date_object <= most_recent_date_object:
-            break
+            continue
         
         
         #sanitize this col
@@ -260,7 +263,7 @@ for month in months:
         cols[2] = team_dict[cols[2]] 
         cols[4] = team_dict[cols[4]] 
 
-        formatted_date = datetime.strptime(cols[0], '%Y-%m-%d').strftime('%m/%d/%Y')
+        formatted_date = datetime.strptime(cols[0], '%Y-%m-%d').strftime('%#m/%#d/%Y')
 
         # update home and away team scores
         df.loc[(df['Date'] == formatted_date) & (df['Home_Team'] == cols[2]) & (df['Away_Team'] == cols[4]), "Home_Pts"] = cols[3]
