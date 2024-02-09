@@ -334,7 +334,7 @@ for i in range(schedule_df.shape[0]):
     #make it a blank list if it doesn't exist
     date = schedule_df.iloc[i, 0]
     #add zero padded days and months
-    date = datetime.strptime(date, '%m/%d/%Y').strftime('%m/%d/%Y')
+    date = datetime.strptime(date, '%#m/%#d/%Y').strftime('%m/%d/%Y')
     if data.get(date, None) != None:
         data[date].append(game)
     else:
