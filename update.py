@@ -263,7 +263,11 @@ for month in months:
         cols[2] = team_dict[cols[2]] 
         cols[4] = team_dict[cols[4]] 
 
-        formatted_date = datetime.strptime(cols[0], '%Y-%m-%d').strftime('%-m/%-d/%Y')
+        formatted_date = datetime.strptime(cols[0], '%Y-%m-%d').strftime('%m/%d/%Y')
+        day = int(formatted_date[0:2])
+        month = int(formatted_date[3:5])
+        year = int(formatted_date[6:])
+        formatted_date = f"{month}/{day}/{year}"
 
         # update home and away team scores
         df.loc[(df['Date'] == formatted_date) & (df['Home_Team'] == cols[2]) & (df['Away_Team'] == cols[4]), "Home_Pts"] = cols[3]
@@ -334,7 +338,7 @@ for i in range(schedule_df.shape[0]):
     #make it a blank list if it doesn't exist
     date = schedule_df.iloc[i, 0]
     #add zero padded days and months
-    date = datetime.strptime(date, '%-m/%-d/%Y').strftime('%m/%d/%Y')
+    date = datetime.strptime(date, '%m/%d/%Y').strftime('%m/%d/%Y')
     if data.get(date, None) != None:
         data[date].append(game)
     else:
