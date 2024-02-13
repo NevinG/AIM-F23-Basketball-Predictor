@@ -264,10 +264,10 @@ for month in months:
         cols[4] = team_dict[cols[4]] 
 
         formatted_date = datetime.strptime(cols[0], '%Y-%m-%d').strftime('%m/%d/%Y')
-        day = int(formatted_date[0:2])
-        month = int(formatted_date[3:5])
-        year = int(formatted_date[6:])
-        formatted_date = f"{month}/{day}/{year}"
+        f_month = int(formatted_date[0:2])
+        f_day = int(formatted_date[3:5])
+        f_year = int(formatted_date[6:])
+        formatted_date = f"{f_month}/{f_day}/{f_year}"
 
         # update home and away team scores
         df.loc[(df['Date'] == formatted_date) & (df['Home_Team'] == cols[2]) & (df['Away_Team'] == cols[4]), "Home_Pts"] = cols[3]
